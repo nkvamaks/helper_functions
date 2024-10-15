@@ -20,6 +20,20 @@ from pathlib import Path
 
 import requests
 
+
+def set_seeds(seed: int=42):
+    """Sets random sets for torch operations.
+	Materials for the Learn PyTorch for Deep Learning: Zero to Mastery course.
+	https://github.com/mrdbourke/pytorch-deep-learning
+    Args:
+        seed (int, optional): Random seed to set. Defaults to 42.
+    """
+    # Set the seed for general torch operations
+    torch.manual_seed(seed)
+    # Set the seed for CUDA torch operations (ones that happen on the GPU)
+    torch.cuda.manual_seed(seed)
+
+
 # Walk through an image classification directory and find out how many files (images)
 # are in each subdirectory.
 import os
@@ -239,17 +253,6 @@ def pred_and_plot_image(
         title = f"Pred: {target_image_pred_label} | Prob: {target_image_pred_probs.max().cpu():.3f}"
     plt.title(title)
     plt.axis(False)
-
-def set_seeds(seed: int=42):
-    """Sets random sets for torch operations.
-
-    Args:
-        seed (int, optional): Random seed to set. Defaults to 42.
-    """
-    # Set the seed for general torch operations
-    torch.manual_seed(seed)
-    # Set the seed for CUDA torch operations (ones that happen on the GPU)
-    torch.cuda.manual_seed(seed)
 
 def download_data(source: str, 
                   destination: str,
