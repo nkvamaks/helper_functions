@@ -1,3 +1,5 @@
+import torch
+
 # One-hot encoding
 def onehot(sequence: str):
     """
