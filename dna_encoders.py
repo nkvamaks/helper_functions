@@ -9,7 +9,7 @@ def onehot(sequence: str):
     mapping = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
     encoded_seq = [mapping[nt] for nt in sequence]
     # print(np.eye(4)[encoded_seq].shape)
-    return torch.eye(4)[encoded_seq]
+    return torch.eye(4)[encoded_seq].permute(0, 1)
 
 
 def one_hot_encode_sequence(sequence):
@@ -26,7 +26,7 @@ def one_hot_encode_sequence(sequence):
              'cEtG':[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0],
              'cEtT':[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]}
     # Create array from nucleotide sequence
-    return torch.tensor([nuc_d[x] for x in sequence])
+    return torch.tensor([nuc_d[x] for x in sequence]).permute(0, 1)
 
 
 
