@@ -332,12 +332,12 @@ def train_classif(model: torch.nn.Module,
 
     # Loop through training and testing steps for a number of epochs
     for epoch in tqdm(range(epochs)):
-        train_loss, train_acc = train_step(model=model,
+        train_loss, train_acc = train_step_loss_classif(model=model,
                                           dataloader=train_dataloader,
                                           loss_fn=loss_fn,
                                           optimizer=optimizer,
                                           device=device)
-        test_loss, test_acc = test_step(model=model,
+        test_loss, test_acc = test_step_loss_classif(model=model,
           dataloader=test_dataloader,
           loss_fn=loss_fn,
           device=device)
